@@ -2,30 +2,28 @@
 
 function isRoot() {
 	if [ "${EUID}" -ne 0 ]; then
-		echo "You need to run this script as root"
+		echo "Hai bisogno dei permessi root per eseguire questo script! Esegui prima un 'sudo su'"
 		exit 1
 	fi
 }
 
 function initialQuestions() {
-        echo "Welcome to the Pisces Troubleshoot Script!"
-        echo "The git repository is available at: https://github.com/WantClue/Pisces-scripts"
+        echo " Bene! Possiamo iniziare con l'ottimizzazione del tuo Pisces!"
         echo ""
         echo ""
         echo ""
         echo ""
-        read -n1 -r -p "Press any key to continue..."
+        read -n1 -r -p "Premi qualsiasi tasto per continuare..."
         
 }
  
 function manageMenu() {
-       echo "What do you want to do?"
-	     echo "   1) Clear Blockchain Data and resync AUTOMATION"
-	     echo "	This will automatically clear and resync so you don´t need to do this more than once"
+       echo "Cosa vorresti fare?"
+	     echo "   1) Cancellare tutti i dati della Blockchain ed eseguire immediatamente un fastsyc"
 	     echo "   2) Fix PacketForwarder Issue"
 	     echo "   3) Fix Dashboard not loading"
 	     echo "   4) Get a new Snapshot"
-	     echo "   5) Fix Not Found ERROR (Peerbook increase)"
+	     echo "   5) Risolvi i problemi dei Not Found ERROR (Aumenta i Peerbook)"
 	     echo "   6) Exit"
  
       until [[ ${MENU_OPTION} =~ ^[1-6]$ ]]; do
@@ -63,7 +61,7 @@ function manageMenu() {
 
 
 function clearBlockchain() {
-		echo "Using the moophlo cronjob scrypt!"
+		echo "Usiamo lo script del Fastsync di inigoflores!"
 		
 		local PS3='Please enter sub option: '
   		local options=("Install automation" "Clear Blockchain once" "Sub menu quit")
